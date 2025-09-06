@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockTwits Scraper</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>StockTwits Scraper</h1>
+            <div class="status-bar">
+                <div class="status-indicator" id="statusIndicator">
+                    <span id="statusText">Stopped</span>
+                    <div class="indicator-dot" id="indicatorDot"></div>
+                </div>
+                <div class="controls">
+                    <button id="startBtn" class="btn btn-success">Start Scraping</button>
+                    <button id="stopBtn" class="btn btn-danger" disabled>Stop Scraping</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button class="tab-button active" data-tab="symbols">Symbols Management</button>
+                <button class="tab-button" data-tab="data">Scraped Data</button>
+                <button class="tab-button" data-tab="logs">Logs</button>
+            </div>
+
+            <div id="symbols" class="tab-content active">
+                <div class="section">
+                    <h2>Manage Symbols</h2>
+                    <div class="symbol-manager">
+                        <div class="form-group">
+                            <label for="symbolInput">Add Stock Symbol:</label>
+                            <div class="input-group">
+                                <input type="text" id="symbolInput" placeholder="e.g., CLSK, HIVE, AAPL" />
+                                <button id="addSymbolBtn" class="btn btn-primary">Add</button>
+                            </div>
+                        </div>
+                        
+                        <div class="symbols-list">
+                            <h3>Tracked Symbols:</h3>
+                            <div id="symbolsList" class="symbols-grid">
+                                <!-- Symbols will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div class="check-section">
+                            <h3>Check All Symbols</h3>
+                            <button id="checkAllBtn" class="btn btn-success btn-large">
+                                <span class="btn-text">Check Watchers</span>
+                                <span class="btn-loading" style="display: none;">Checking...</span>
+                            </button>
+                            <div id="checkStatus" class="check-status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="data" class="tab-content">
+                <div class="section">
+                    <h2>Scraped Data</h2>
+                    <div class="filter-controls">
+                        <select id="symbolFilter">
+                            <option value="">All Symbols</option>
+                        </select>
+                        <button id="refreshData" class="btn btn-secondary">Refresh</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Content</th>
+                                    <th>Author</th>
+                                    <th>Timestamp</th>
+                                    <th>Likes</th>
+                                    <th>Scraped At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button id="prevPage" class="btn btn-secondary" disabled>Previous</button>
+                        <span id="pageInfo">Page 1</span>
+                        <button id="nextPage" class="btn btn-secondary">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="logs" class="tab-content">
+                <div class="section">
+                    <h2>Scraping Logs</h2>
+                    <button id="refreshLogs" class="btn btn-secondary">Refresh</button>
+                    <div class="table-container">
+                        <table id="logsTable">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Status</th>
+                                    <th>Message</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle">Modal Title</h3>
+            <div id="modalBody">Modal content</div>
+            <div class="modal-actions">
+                <button id="modalConfirm" class="btn btn-primary">Confirm</button>
+                <button id="modalCancel" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
