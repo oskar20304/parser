@@ -14,7 +14,7 @@ A complete web application for scraping StockTwits data with scheduling, web int
 - **Manual Scraping**: Trigger immediate scraping for any configured symbol
 
 ## Installation
-
+test1change
 1. **Clone or download the project files**
 
 2. **Install dependencies:**
